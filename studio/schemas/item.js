@@ -1,19 +1,19 @@
 export default {
   title: "Item",
   name: "item",
-  type: "object",
+  type: "document",
   fields: [
     {
       title: "Name",
-      name: "name",
+      name: "itemName",
       type: "string",
     },
     {
       title: "Slug",
       type: "slug",
-      name: "slug",
+      name: "link",
       options: {
-        source: "name",
+        source: "itemName",
       },
     },
     {

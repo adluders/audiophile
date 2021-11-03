@@ -29,6 +29,12 @@ export default {
       to: [{ type: "category" }],
     },
     {
+      name: "categoryImage",
+      title: "Category Image",
+      type: "array",
+      of: [{ type: "graphic" }],
+    },
+    {
       name: "condition",
       title: "New",
       type: "boolean",
@@ -60,7 +66,7 @@ export default {
       title: "Others",
       name: "others",
       type: "array",
-      of: [{ type: "item" }],
+      of: [{ type: "reference", to: [{ type: "item" }] }],
     },
   ],
 };

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import Logo from "../images/shared/desktop/logo.svg";
-import Cart from "../images/shared/desktop/icon-cart.svg";
+import Logo from "../../images/shared/desktop/logo.svg";
+import Cart from "../../images/shared/desktop/icon-cart.svg";
 
 const Header = styled.header`
   background-color: #0e0e0e;
@@ -38,6 +38,7 @@ const NavItems = styled.ul`
 const NavItem = styled.li`
   text-transform: uppercase;
   font-size: 0.8rem;
+  letter-spacing: 1px;
 `;
 
 const Navbar = () => {

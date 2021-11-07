@@ -1,10 +1,10 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import Logo from "../images/shared/desktop/logo.svg";
-import Facebook from "../images/shared/desktop/icon-facebook.svg";
-import Twitter from "../images/shared/desktop/icon-twitter.svg";
-import Instagram from "../images/shared/desktop/icon-instagram.svg";
+import Logo from "../../images/shared/desktop/logo.svg";
+import Facebook from "../../images/shared/desktop/icon-facebook.svg";
+import Twitter from "../../images/shared/desktop/icon-twitter.svg";
+import Instagram from "../../images/shared/desktop/icon-instagram.svg";
 
 const Wrapper = styled.footer`
   background-color: #0e0e0e;

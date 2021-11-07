@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import Hamburger from "../images/shared/tablet/icon-hamburger.svg";
-import Logo from "../images/shared/desktop/logo.svg";
-import Cart from "../images/shared/desktop/icon-cart.svg";
-import Speakers from "../images/shared/desktop/image-category-thumbnail-speakers.png";
-import Headphones from "../images/shared/desktop/image-category-thumbnail-headphones.png";
-import Earphones from "../images/shared/desktop/image-category-thumbnail-earphones.png";
-import Arrow from "../images/shared/desktop/icon-arrow-right.svg";
+import Hamburger from "../../images/shared/tablet/icon-hamburger.svg";
+import Logo from "../../images/shared/desktop/logo.svg";
+import Cart from "../../images/shared/desktop/icon-cart.svg";
+import Speakers from "../../images/shared/desktop/image-category-thumbnail-speakers.png";
+import Headphones from "../../images/shared/desktop/image-category-thumbnail-headphones.png";
+import Earphones from "../../images/shared/desktop/image-category-thumbnail-earphones.png";
+import Arrow from "../../images/shared/desktop/icon-arrow-right.svg";
 
 const Header = styled.header`
   background-color: #0e0e0e;

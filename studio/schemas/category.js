@@ -4,9 +4,14 @@ export default {
   title: "Category",
   fields: [
     {
-      title: "Category",
-      name: "category",
+      title: "Name",
+      name: "name",
       type: "string",
+    },
+    {
+      title: "Graphic",
+      name: "catImage",
+      type: "image",
     },
   ],
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
-import * as globalStyles from "../global.css";
-import useResizer from "../hooks/useResizer";
+import * as globalStyles from "../../global.css";
+import useResizer from "../../hooks/useResizer";
 import MobileNav from "./MobileNav";
 import Footer from "./Footer";
 import styled from "styled-components";

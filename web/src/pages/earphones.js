@@ -1,12 +1,50 @@
+import { graphql } from "gatsby";
 import React from "react";
-import Layout from "../components/Layout";
+import Display from "../components/shared/Display";
+import { Container, Header } from "../components/shared/GlobalStyles";
+import Layout from "../components/shared/Layout";
 
-const Earphones = () => {
+const Earphones = ({ data }) => {
   return (
     <Layout>
-      <h1>Earphones</h1>
+      <Header>
+        <h1>earphones</h1>
+      </Header>
+
+      <Container>
+        {data.allSanityProduct.nodes.map((product, inx) => (
+          <Display
+            rotation={inx % 2 !== 0 ? "reversed" : ""}
+            key={product.id}
+            product={product}
+          />
+        ))}
+      </Container>
     </Layout>
   );
 };
+
+export const query = graphql`
+  {
+    allSanityProduct(filter: { category: { name: { eq: "earphones" } } }) {
+      nodes {
+        id
+        name
+        new
+        description
+        categoryImage {
+          image {
+            asset {
+              gatsbyImageData
+            }
+          }
+        }
+        slug {
+          current
+        }
+      }
+    }
+  }
+`;
 
 export default Earphones;

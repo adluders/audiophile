@@ -1,10 +1,24 @@
 import * as React from "react";
-import Layout from "../components/Layout";
+import FeaturedEarphones from "../components/home/FeaturedEarphones";
+import FeaturedSpeaker from "../components/home/FeaturedSpeaker";
+import Hero from "../components/home/Hero";
+import { Container } from "../components/shared/GlobalStyles";
+import SecondarySpeaker from "../components/home/SecondarySpeaker";
+import Layout from "../components/shared/Layout";
+import PageNav from "../components/shared/PageNav";
+import Statement from "../components/shared/Statement";
 
 const IndexPage = () => {
   return (
     <Layout>
-      <h1>Home Page</h1>
+      <Hero />
+      <Container>
+        <PageNav />
+        <FeaturedSpeaker />
+        <SecondarySpeaker />
+        <FeaturedEarphones />
+        <Statement />
+      </Container>
     </Layout>
   );
 };

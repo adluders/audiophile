@@ -35,7 +35,7 @@ export default {
       of: [{ type: "graphic" }],
     },
     {
-      name: "condition",
+      name: "new",
       title: "New",
       type: "boolean",
     },
@@ -43,6 +43,11 @@ export default {
       name: "price",
       title: "Price",
       type: "number",
+    },
+    {
+      name: "adText",
+      title: "Ad Text",
+      type: "text",
     },
     {
       name: "description",

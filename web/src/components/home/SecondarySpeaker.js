@@ -44,7 +44,10 @@ const SecondarySpeaker = () => {
       <Content>
         <Title>{data.sanityProduct.name}</Title>
 
-        <Button btntype="secondary" to="/" />
+        <Button
+          btntype="secondary"
+          route={`speakers/${data.sanityProduct.slug.current}`}
+        />
       </Content>
     </Wrapper>
   );

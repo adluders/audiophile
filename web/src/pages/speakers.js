@@ -17,6 +17,7 @@ const Speakers = ({ data }) => {
             rotation={inx % 2 !== 0 ? "reversed" : ""}
             key={product.id}
             product={product}
+            pretext="speakers"
           />
         ))}
       </Container>

@@ -72,7 +72,10 @@ const FeaturedSpeaker = () => {
 
         <Content> {data.sanityProduct.adText} </Content>
 
-        <Button to="/" />
+        <Button
+          route={`speakers/${data.sanityProduct.slug.current}`}
+          text="see product"
+        />
       </Div>
     </Wrapper>
   );

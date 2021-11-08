@@ -47,16 +47,20 @@ const handleHover = (btntype) => {
   }
 };
 
-const Button = ({ btntype }) => {
+const Button = ({ btntype, text, route }) => {
   return (
-    <Wrapper btntype={btntype} to="/">
-      see product
+    <Wrapper btntype={btntype} to={`/${route}`}>
+      {text}
     </Wrapper>
   );
 };
 
-Button.proptype = { btntype: PropTypes.string.isRequired };
+Button.proptype = {
+  btntype: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  route: PropTypes.string.isRequired,
+};
 
-Button.defaultProps = { btntype: "" };
+Button.defaultProps = { btntype: "", text: "see product", route: "" };
 
 export default Button;

@@ -79,7 +79,7 @@ const Hero = () => {
             made for the passionate music enthusiast.
           </Para>
 
-          <Button btntype="primary" />
+          <Button btntype="primary" text="see product" />
         </Content>
       </Container>
     </Wrapper>

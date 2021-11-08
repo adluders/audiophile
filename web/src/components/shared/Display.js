@@ -49,8 +49,8 @@ const handleReverse = (rotation) => {
   }
 };
 
-const Display = ({ rotation, product }) => {
-  const { name, description, categoryImage } = product;
+const Display = ({ rotation, product, pretext }) => {
+  const { name, description, categoryImage, slug } = product;
 
   return (
     <Wrapper rotation={rotation}>
@@ -73,7 +73,7 @@ const Display = ({ rotation, product }) => {
 
         <Paragraph>{description}</Paragraph>
 
-        <Button btntype="primary" to="/" />
+        <Button btntype="primary" route={`${pretext}/${slug.current}`} />
       </Content>
     </Wrapper>
   );

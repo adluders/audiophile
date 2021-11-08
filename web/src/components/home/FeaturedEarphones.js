@@ -54,7 +54,10 @@ const FeaturedEarphones = () => {
 
       <Div>
         <Title> {data.sanityProduct.name} </Title>
-        <Button btntype="secondary" to="/" />
+        <Button
+          btntype="secondary"
+          route={`earphones/${data.sanityProduct.slug.current}`}
+        />
       </Div>
     </Wrapper>
   );

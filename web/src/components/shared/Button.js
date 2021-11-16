@@ -20,6 +20,14 @@ const Wrapper = styled(Link)`
   &:hover {
     ${({ btntype }) => handleHover(btntype)}
   }
+
+  @media screen and (max-width: 820px) {
+    padding: 0.8rem 1rem;
+  }
+
+  @media screen and (max-width: 410px) {
+    padding: 0.5rem 1rem;
+  }
 `;
 
 const buttonScheme = (btntype) => {

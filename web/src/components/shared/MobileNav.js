@@ -38,6 +38,11 @@ const NavItems = styled.ul`
   position: absolute;
   top: 93px;
   width: 100%;
+  @media screen and (max-width: 410px) {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
 `;
 
 const NavItem = styled.li`

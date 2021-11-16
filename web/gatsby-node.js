@@ -44,14 +44,15 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
           others {
-            image {
-              image {
-                asset {
-                  gatsbyImageData
-                }
+            graphic {
+              asset {
+                gatsbyImageData
               }
             }
             itemName
+            category {
+              name
+            }
             link {
               current
             }
@@ -106,14 +107,15 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
           others {
-            image {
-              image {
-                asset {
-                  gatsbyImageData
-                }
+            graphic {
+              asset {
+                gatsbyImageData
               }
             }
             itemName
+            category {
+              name
+            }
             link {
               current
             }
@@ -168,14 +170,15 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
           others {
-            image {
-              image {
-                asset {
-                  gatsbyImageData
-                }
+            graphic {
+              asset {
+                gatsbyImageData
               }
             }
             itemName
+            category {
+              name
+            }
             link {
               current
             }

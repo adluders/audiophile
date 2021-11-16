@@ -2,6 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import BgImage from "../../images/home/desktop/image-speaker-zx7.jpg";
+import MobileBg from "../../images/home/mobile/image-speaker-zx7.jpg";
 import Button from "../shared/Button";
 
 const Wrapper = styled.section`
@@ -12,7 +13,11 @@ const Wrapper = styled.section`
   background-color: #979797;
   background-image: url(${BgImage});
   background-size: cover;
-  background-repeat: no-repeat; ;
+  background-repeat: no-repeat;
+  @media screen and (max-width: 410px) {
+    background-image: url(${MobileBg});
+    padding: 5rem 1.2rem;
+  }
 `;
 
 const Content = styled.div`
@@ -21,6 +26,9 @@ const Content = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 2rem;
+  @media screen and (max-width: 410px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.h3`

@@ -4,6 +4,10 @@ import { Container } from "../shared/GlobalStyles";
 import Button from "../shared/Button";
 import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
+import Statement from "../shared/Statement";
+import PageNav from "../shared/PageNav";
+import Gallery from "../shared/Gallery";
+import Suggestions from "../shared/Suggestions";
 
 const Header = styled.div`
   display: flex;
@@ -15,6 +19,18 @@ const Product = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 9rem;
+
+  @media screen and (max-width: 820px) {
+    gap: 3rem;
+  }
+
+  @media screen and (max-width: 410px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 3rem;
+  }
 `;
 
 const Graphic = styled.div`
@@ -56,6 +72,14 @@ const Amount = styled.div`
   gap: 2rem;
   background-color: #f1f1f1;
   padding: 1rem 2rem;
+
+  @media screen and (max-width: 820px) {
+    padding: 0.8rem 1rem;
+  }
+
+  @media screen and (max-width: 410px) {
+    padding: 0.5rem 1rem;
+  }
 `;
 
 const Icon = styled.p`
@@ -68,6 +92,12 @@ const Details = styled.section`
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 7rem;
+
+  @media screen and (max-width: 820px) {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
 `;
 
 const SubHeading = styled.h2`
@@ -83,7 +113,14 @@ const CartCTA = styled.div`
   gap: 2.3rem;
 `;
 
-const Div = styled.div``;
+const Div = styled.div`
+  &:last-of-type {
+    @media screen and (min-width: 410px) and (max-width: 820px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+`;
 
 const BoxItem = styled.div`
   display: flex;
@@ -99,13 +136,13 @@ const Category = ({ pageContext }) => {
     <Layout>
       <Container>
         <Header>
-          <Button to="/" text="back" />
+          <Button to="/" text="back" btntype="secondary" />
         </Header>
 
         <Product>
           <Graphic>
             <GatsbyImage
-              image={graphics[0].image.asset.gatsbyImageData}
+              image={graphics.image.asset.gatsbyImageData}
               alt={name}
               placeholder="blurred"
             />
@@ -140,17 +177,26 @@ const Category = ({ pageContext }) => {
 
           <Div>
             <SubHeading>in the box</SubHeading>
-            {pageContext.package.map(({ item, quantity }) => (
-              <BoxItem>
-                <Para style={{ color: "#d87d4a", fontWeight: "bold" }}>
-                  {" "}
-                  {quantity}x{" "}
-                </Para>
-                <Para> {item} </Para>
-              </BoxItem>
-            ))}
+            <div>
+              {pageContext.package.map(({ item, quantity }) => (
+                <BoxItem key={item}>
+                  <Para style={{ color: "#d87d4a", fontWeight: "bold" }}>
+                    {quantity}x
+                  </Para>
+                  <Para> {item} </Para>
+                </BoxItem>
+              ))}
+            </div>
           </Div>
         </Details>
+
+        <Gallery images={gallery} />
+
+        <Suggestions items={others} />
+
+        <PageNav />
+
+        <Statement />
       </Container>
     </Layout>
   );

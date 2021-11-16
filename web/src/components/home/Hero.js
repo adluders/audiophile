@@ -46,6 +46,9 @@ const Content = styled.div`
 const Heading = styled.h1`
   font-size: 60px;
   text-transform: uppercase;
+  @media screen and (max-width: 410px) {
+    font-size: 2.3rem;
+  }
 `;
 
 const Para = styled.p`
@@ -79,7 +82,11 @@ const Hero = () => {
             made for the passionate music enthusiast.
           </Para>
 
-          <Button btntype="primary" text="see product" />
+          <Button
+            btntype="primary"
+            text="see product"
+            route="headphones/xx99-mark-ii-headphones"
+          />
         </Content>
       </Container>
     </Wrapper>

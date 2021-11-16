@@ -9,6 +9,11 @@ const Wrapper = styled.section`
   gap: 1.5rem;
 
   margin: 8rem auto 9rem auto;
+  @media screen and (max-width: 410px) {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+  }
 `;
 
 const LinkItem = styled(Link)``;

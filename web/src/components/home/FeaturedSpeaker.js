@@ -3,22 +3,31 @@ import { useStaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import Button from "../shared/Button";
+import useResizer from "../../hooks/useResizer";
 
 const Wrapper = styled.section`
   background-color: #d87d4a;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 5rem;
-  padding: 6rem 6rem 0 6rem;
+  padding: 3rem;
 
   border-radius: 0.5rem;
+
+  @media screen and (max-width: 410px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4.5rem 1rem;
+  }
 `;
 
 const Div = styled.div`
   color: #fff;
   img {
-    width: 410px;
-    height: 495px;
+    min-width: 10rem;
   }
 
   &:last-of-type {
@@ -27,8 +36,10 @@ const Div = styled.div`
     align-items: flex-start;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 7rem;
-    width: 85%;
+    @media screen and (max-width: 410px) {
+      margin-bottom: 0;
+      align-items: center;
+    }
   }
 `;
 
@@ -57,14 +68,38 @@ const FeaturedSpeaker = () => {
     }
   `);
 
+  const screenSize = useResizer();
+
   return (
     <Wrapper>
       <Div>
-        <StaticImage
-          placeholder="blurred"
-          src="../../images/home/desktop/image-speaker-zx9.png"
-          alt="zx9 speaker"
-        />
+        {(() => {
+          if (screenSize > 768) {
+            return (
+              <StaticImage
+                placeholder="blurred"
+                src="../../images/home/desktop/image-speaker-zx9.png"
+                alt="zx9 speaker"
+              />
+            );
+          } else if (screenSize > 410) {
+            return (
+              <StaticImage
+                placeholder="blurred"
+                src="../../images/home/tablet/image-speaker-zx9.png"
+                alt="zx9 speaker"
+              />
+            );
+          } else {
+            return (
+              <StaticImage
+                placeholder="blurred"
+                src="../../images/home/mobile/image-speaker-zx9.png"
+                alt="zx9 speaker"
+              />
+            );
+          }
+        })()}
       </Div>
 
       <Div>

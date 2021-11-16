@@ -8,6 +8,17 @@ const Wrapper = styled.section`
   ${({ rotation }) => handleReverse(rotation)};
   gap: 1rem;
   margin: 7rem auto;
+
+  @media screen and (max-width: 820px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media screen and (max-width: 410px) {
+    flex-direction: column;
+    margin: 3rem auto;
+    gap: 2rem;
+  }
 `;
 
 const Graphic = styled.div`
@@ -17,6 +28,14 @@ const Graphic = styled.div`
   width: 0;
   img {
     border-radius: 0.5rem;
+  }
+
+  @media screen and (max-width: 820px) {
+    width: 100%;
+    img {
+      width: 70%;
+      margin: auto;
+    }
   }
 `;
 
@@ -31,6 +50,13 @@ const Content = styled.div`
   flex-grow: 1;
 
   padding: 4rem;
+
+  @media screen and (max-width: 820px) {
+    padding: 0;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const Heading = styled.h2``;
@@ -50,13 +76,13 @@ const handleReverse = (rotation) => {
 };
 
 const Display = ({ rotation, product, pretext }) => {
-  const { name, description, categoryImage, slug } = product;
+  const { name, description, graphics, slug } = product;
 
   return (
     <Wrapper rotation={rotation}>
       <Graphic>
         <GatsbyImage
-          image={categoryImage[2].image.asset.gatsbyImageData}
+          image={graphics.image.asset.gatsbyImageData}
           alt={name}
           placeholder="blurred"
         />

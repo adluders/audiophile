@@ -3,6 +3,8 @@ import React from "react";
 import Display from "../components/shared/Display";
 import { Container, Header } from "../components/shared/GlobalStyles";
 import Layout from "../components/shared/Layout";
+import PageNav from "../components/shared/PageNav";
+import Statement from "../components/shared/Statement";
 
 const HeadPhones = ({ data }) => {
   return (
@@ -20,6 +22,8 @@ const HeadPhones = ({ data }) => {
             pretext="headphones"
           />
         ))}
+        <PageNav />
+        <Statement />
       </Container>
     </Layout>
   );
@@ -27,13 +31,16 @@ const HeadPhones = ({ data }) => {
 
 export const query = graphql`
   {
-    allSanityProduct(filter: { category: { name: { eq: "headphones" } } }) {
+    allSanityProduct(
+      filter: { category: { name: { eq: "headphones" } } }
+      sort: { fields: new, order: DESC }
+    ) {
       nodes {
         id
         name
         new
         description
-        categoryImage {
+        graphics {
           image {
             asset {
               gatsbyImageData

@@ -25,6 +25,10 @@ const Section = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 410px) {
+    flex-direction: column;
+  }
 `;
 
 const Div = styled.div``;
@@ -42,6 +46,12 @@ const ListItems = styled.ul`
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  @media screen and (max-width: 410px) {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
 `;
 
 const ListItem = styled.li`
@@ -57,6 +67,23 @@ const Content = styled.section`
   margin-bottom: 3rem;
   p {
     max-width: 55%;
+  }
+
+  @media screen and (max-width: 410px) {
+    flex-direction: column;
+    div:last-of-type {
+      width: 100%;
+      ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    p {
+      max-width: 100%;
+      text-align: center;
+    }
   }
 `;
 

@@ -4,6 +4,8 @@ import Layout from "../components/shared/Layout";
 import { Container } from "../components/shared/GlobalStyles";
 import { Header } from "../components/shared/GlobalStyles";
 import Display from "../components/shared/Display";
+import PageNav from "../components/shared/PageNav";
+import Statement from "../components/shared/Statement";
 
 const Speakers = ({ data }) => {
   return (
@@ -20,6 +22,8 @@ const Speakers = ({ data }) => {
             pretext="speakers"
           />
         ))}
+        <PageNav />
+        <Statement />
       </Container>
     </Layout>
   );
@@ -33,7 +37,7 @@ export const query = graphql`
         name
         new
         description
-        categoryImage {
+        graphics {
           image {
             asset {
               gatsbyImageData

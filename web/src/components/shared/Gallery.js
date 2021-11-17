@@ -8,6 +8,11 @@ const Wrapper = styled.section`
   grid-template-rows: repeat(2, 1fr);
   gap: 2rem;
   margin-bottom: 7rem;
+
+  @media screen and (max-width: 430px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const Div = styled.div`

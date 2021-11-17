@@ -9,7 +9,7 @@ const Wrapper = styled.section`
   grid-template-columns: repeat(2, 1fr);
   gap: 5rem;
   margin-bottom: 2.5rem;
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -31,7 +31,7 @@ const Div = styled.div`
     gap: 1.5rem;
 
     padding: 0rem 0 0 4rem;
-    @media screen and (max-width: 410px) {
+    @media screen and (max-width: 430px) {
       justify-content: flex-start;
       padding: 2.5rem 0 2.5rem 1rem;
     }

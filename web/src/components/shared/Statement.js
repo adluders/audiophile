@@ -7,7 +7,7 @@ const Wrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 7rem;
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;

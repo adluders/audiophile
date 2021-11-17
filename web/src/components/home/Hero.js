@@ -46,7 +46,7 @@ const Content = styled.div`
 const Heading = styled.h1`
   font-size: 60px;
   text-transform: uppercase;
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     font-size: 2.3rem;
   }
 `;

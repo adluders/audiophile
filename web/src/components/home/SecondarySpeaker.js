@@ -14,7 +14,7 @@ const Wrapper = styled.section`
   background-image: url(${BgImage});
   background-size: cover;
   background-repeat: no-repeat;
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     background-image: url(${MobileBg});
     padding: 5rem 1.2rem;
   }
@@ -26,7 +26,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 2rem;
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     width: 100%;
   }
 `;

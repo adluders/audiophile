@@ -15,7 +15,7 @@ const Wrapper = styled.section`
 
   border-radius: 0.5rem;
 
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +36,7 @@ const Div = styled.div`
     align-items: flex-start;
     justify-content: center;
     gap: 1rem;
-    @media screen and (max-width: 410px) {
+    @media screen and (max-width: 430px) {
       margin-bottom: 0;
       align-items: center;
     }

@@ -25,7 +25,7 @@ const Wrapper = styled(Link)`
     padding: 0.8rem 1rem;
   }
 
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     padding: 0.5rem 1rem;
   }
 `;

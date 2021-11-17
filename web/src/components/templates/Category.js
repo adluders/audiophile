@@ -24,7 +24,7 @@ const Product = styled.section`
     gap: 3rem;
   }
 
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,7 +77,7 @@ const Amount = styled.div`
     padding: 0.8rem 1rem;
   }
 
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     padding: 0.5rem 1rem;
   }
 `;

@@ -14,7 +14,7 @@ const Wrapper = styled.section`
     gap: 2rem;
   }
 
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     flex-direction: column;
     margin: 3rem auto;
     gap: 2rem;

@@ -26,7 +26,7 @@ const Section = styled.section`
   justify-content: space-between;
   align-items: center;
 
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     flex-direction: column;
   }
 `;
@@ -47,7 +47,7 @@ const ListItems = styled.ul`
   align-items: center;
   gap: 1rem;
 
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     flex-direction: column;
     gap: 1.5rem;
     margin-top: 2rem;
@@ -69,7 +69,7 @@ const Content = styled.section`
     max-width: 55%;
   }
 
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     flex-direction: column;
     div:last-of-type {
       width: 100%;

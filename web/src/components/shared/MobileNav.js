@@ -38,7 +38,7 @@ const NavItems = styled.ul`
   position: absolute;
   top: 93px;
   width: 100%;
-  @media screen and (max-width: 410px) {
+  @media screen and (max-width: 430px) {
     display: flex;
     flex-direction: column;
     gap: 5rem;

@@ -8,6 +8,13 @@ export default {
       name: "itemName",
       type: "string",
     },
+
+    {
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "category" }],
+    },
     {
       title: "Slug",
       type: "slug",
@@ -17,10 +24,9 @@ export default {
       },
     },
     {
-      title: "Image",
-      name: "image",
-      type: "array",
-      of: [{ type: "graphic" }],
+      title: "Graphic",
+      type: "image",
+      name: "graphic",
     },
   ],
 };

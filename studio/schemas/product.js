@@ -19,20 +19,13 @@ export default {
     {
       name: "graphics",
       title: "Graphics",
-      type: "array",
-      of: [{ type: "graphic" }],
+      type: "graphic",
     },
     {
       name: "category",
       title: "Category",
       type: "reference",
       to: [{ type: "category" }],
-    },
-    {
-      name: "categoryImage",
-      title: "Category Image",
-      type: "array",
-      of: [{ type: "graphic" }],
     },
     {
       name: "new",
@@ -64,8 +57,7 @@ export default {
     {
       name: "gallery",
       title: "Gallery",
-      type: "array",
-      of: [{ type: "galleryItem" }],
+      type: "galleryItem",
     },
     {
       title: "Others",

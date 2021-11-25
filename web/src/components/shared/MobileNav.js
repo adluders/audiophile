@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import Hamburger from "../../images/shared/tablet/icon-hamburger.svg";
@@ -8,6 +8,7 @@ import Speakers from "../../images/shared/desktop/image-category-thumbnail-speak
 import Headphones from "../../images/shared/desktop/image-category-thumbnail-headphones.png";
 import Earphones from "../../images/shared/desktop/image-category-thumbnail-earphones.png";
 import Arrow from "../../images/shared/desktop/icon-arrow-right.svg";
+import { ModalContext } from "../context/ModalContext";
 
 const Header = styled.header`
   background-color: #0e0e0e;
@@ -38,6 +39,7 @@ const NavItems = styled.ul`
   position: absolute;
   top: 93px;
   width: 100%;
+  z-index: 2;
   @media screen and (max-width: 430px) {
     display: flex;
     flex-direction: column;
@@ -114,6 +116,10 @@ const MobileNav = () => {
     setMenuStatus(!menuStatus);
   };
 
+  useEffect(() => {
+    menuStatus && setModalOpen(true);
+  }, [menuStatus]);
+
   const mobileNavData = [
     {
       id: 0,
@@ -134,6 +140,9 @@ const MobileNav = () => {
       graphic: Earphones,
     },
   ];
+
+  const { setModalOpen } = useContext(ModalContext);
+
   return (
     <Header>
       <Section>

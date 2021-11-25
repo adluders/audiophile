@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Layout from "../shared/Layout";
 import { Container } from "../shared/GlobalStyles";
-import Button from "../shared/Button";
 import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Statement from "../shared/Statement";
 import PageNav from "../shared/PageNav";
+import Button from "../shared/Button";
 import Gallery from "../shared/Gallery";
 import Suggestions from "../shared/Suggestions";
+import { CartContext } from "../context/CartContext";
 
 const Header = styled.div`
   display: flex;
@@ -128,9 +129,50 @@ const BoxItem = styled.div`
   gap: 1rem;
 `;
 
+const CartAdd = styled.button`
+  border: solid 2px transparent;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  line-height: 1rem;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #d87d4a;
+  color: #fff;
+
+  &:hover {
+    background-color: #fbaf85;
+  }
+`;
+
 const Category = ({ pageContext }) => {
   const { description, features, gallery, graphics, name, others, price } =
     pageContext;
+
+  const [itemCount, setItemCount] = useState(0);
+
+  const addItem = () => setItemCount(itemCount + 1);
+
+  const removeItem = () => setItemCount(itemCount - 1);
+
+  const updateCart = () => {
+    updateCount(itemCount + count);
+    setItem({
+      name,
+      price,
+      itemCount,
+      graphics,
+    });
+
+    // updateCartItems();
+  };
+
+  const { updateCount, count, setItem } = useContext(CartContext);
 
   return (
     <Layout>
@@ -160,11 +202,11 @@ const Category = ({ pageContext }) => {
 
             <CartCTA>
               <Amount>
-                <Icon> - </Icon>
-                <Para> 1 </Para>
-                <Icon> + </Icon>
+                <Icon onClick={itemCount > 0 ? removeItem : null}> - </Icon>
+                <Para> {itemCount} </Para>
+                <Icon onClick={addItem}> + </Icon>
               </Amount>
-              <Button btntype="primary" text="add to cart" to="/" />
+              <CartAdd onClick={updateCart}>add to cart</CartAdd>
             </CartCTA>
           </Content>
         </Product>

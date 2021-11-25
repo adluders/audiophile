@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import Logo from "../../images/shared/desktop/logo.svg";
 import Cart from "../../images/shared/desktop/icon-cart.svg";
+import { CartContext } from "../context/CartContext";
+import { ModalContext } from "../context/ModalContext";
 
 const Header = styled.header`
   background-color: #0e0e0e;
@@ -41,6 +43,27 @@ const NavItem = styled.li`
   letter-spacing: 1px;
 `;
 
+const CartBox = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+`;
+
+const ItemCount = styled.p`
+  color: #fff;
+  background-color: #db704a;
+  padding: 0.3rem;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  width: 25px;
+  text-align: center;
+
+  position: absolute;
+  top: -90%;
+  left: 70%;
+`;
+
 const Navbar = () => {
   const pagesData = [
     {
@@ -64,6 +87,16 @@ const Navbar = () => {
       text: "earphones",
     },
   ];
+
+  const { count } = useContext(CartContext);
+  const { updateModalOpen } = useContext(ModalContext);
+  const { isCartOpen, updateCartOpen } = useContext(CartContext);
+
+  const openCart = () => {
+    updateModalOpen();
+    updateCartOpen();
+  };
+
   return (
     <Header>
       <Nav>
@@ -83,12 +116,13 @@ const Navbar = () => {
           })}
         </NavItems>
 
-        <Div>
-          <LinkItem to="/">
-            <Image src={Cart} allt="cart item" />
-          </LinkItem>
-        </Div>
+        <CartBox onClick={openCart}>
+          {count > 0 && <ItemCount> {count} </ItemCount>}
+          <Image src={Cart} allt="cart item" />
+        </CartBox>
       </Nav>
+
+      {isCartOpen && <CartContext />}
     </Header>
   );
 };

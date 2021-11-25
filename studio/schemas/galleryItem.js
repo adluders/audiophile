@@ -3,13 +3,12 @@ export default {
   title: "Gallery Item",
   type: "object",
   fields: [
-    { name: "first", title: "First", type: "array", of: [{ type: "graphic" }] },
+    { name: "first", title: "First", type: "graphic" },
     {
       name: "second",
       title: "Second",
-      type: "array",
-      of: [{ type: "graphic" }],
+      type: "graphic",
     },
-    { name: "third", title: "Third", type: "array", of: [{ type: "graphic" }] },
+    { name: "third", title: "Third", type: "graphic" },
   ],
 };

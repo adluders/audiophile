@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Layout from "../shared/Layout";
 import { Container } from "../shared/GlobalStyles";
 import styled from "styled-components";
@@ -151,7 +151,7 @@ const CartAdd = styled.button`
 `;
 
 const Category = ({ pageContext }) => {
-  const { description, features, gallery, graphics, name, others, price } =
+  const { description, features, gallery, graphics, name, others, price, id } =
     pageContext;
 
   const [itemCount, setItemCount] = useState(0);
@@ -167,6 +167,7 @@ const Category = ({ pageContext }) => {
       price,
       itemCount,
       graphics,
+      id,
     });
 
     // updateCartItems();
@@ -198,7 +199,7 @@ const Category = ({ pageContext }) => {
             )}
             <Heading> {name} </Heading>
             <Para> {description} </Para>
-            <Cost> $ {price} </Cost>
+            <Cost> $ {price.toLocaleString()} </Cost>
 
             <CartCTA>
               <Amount>

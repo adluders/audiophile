@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
         filter: { category: { name: { eq: "earphones" } } }
       ) {
         nodes {
+          id
           name
           graphics {
             image {
@@ -72,6 +73,7 @@ exports.createPages = async ({ graphql, actions }) => {
         filter: { category: { name: { eq: "headphones" } } }
       ) {
         nodes {
+          id
           name
           graphics {
             image {
@@ -135,6 +137,7 @@ exports.createPages = async ({ graphql, actions }) => {
         filter: { category: { name: { eq: "speakers" } } }
       ) {
         nodes {
+          id
           name
           graphics {
             image {

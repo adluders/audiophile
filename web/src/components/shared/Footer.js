@@ -167,7 +167,7 @@ const Footer = () => {
               {socialData.map(({ id, address, graphic, text }) => {
                 return (
                   <ListItem key={id}>
-                    <a href={address} target="_blank" rel="norefferer">
+                    <a href={address} target="_blank" rel="noreferrer">
                       <Image src={graphic} alt={text} />
                     </a>
                   </ListItem>

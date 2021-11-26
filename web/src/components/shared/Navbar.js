@@ -1,13 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import Logo from "../../images/shared/desktop/logo.svg";
 import Cart from "../../images/shared/desktop/icon-cart.svg";
 import { CartContext } from "../context/CartContext";
 import { ModalContext } from "../context/ModalContext";
+import CartContent from "./CartContent";
 
 const Header = styled.header`
   background-color: #0e0e0e;
+  position: relative;
 `;
 
 const Nav = styled.nav`
@@ -122,7 +124,7 @@ const Navbar = () => {
         </CartBox>
       </Nav>
 
-      {isCartOpen && <CartContext />}
+      {isCartOpen && <CartContent />}
     </Header>
   );
 };

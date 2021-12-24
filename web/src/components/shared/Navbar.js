@@ -3,9 +3,9 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import Logo from "../../images/shared/desktop/logo.svg";
 import Cart from "../../images/shared/desktop/icon-cart.svg";
-import { CartContext } from "../context/CartContext";
 import { ModalContext } from "../context/ModalContext";
 import CartContent from "./CartContent";
+import { CartContext } from "../context/CartContext";
 
 const Header = styled.header`
   background-color: #0e0e0e;
@@ -90,9 +90,8 @@ const Navbar = () => {
     },
   ];
 
-  const { count } = useContext(CartContext);
   const { updateModalOpen } = useContext(ModalContext);
-  const { isCartOpen, updateCartOpen } = useContext(CartContext);
+  const { updateCartOpen, isCartOpen, cartCount } = useContext(CartContext);
 
   const openCart = () => {
     updateModalOpen();
@@ -119,7 +118,7 @@ const Navbar = () => {
         </NavItems>
 
         <CartBox onClick={openCart}>
-          {count > 0 && <ItemCount> {count} </ItemCount>}
+          <ItemCount> {cartCount} </ItemCount>
           <Image src={Cart} allt="cart item" />
         </CartBox>
       </Nav>

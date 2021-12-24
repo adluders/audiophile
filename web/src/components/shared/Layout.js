@@ -12,6 +12,7 @@ const Wrapper = styled.main`
   flex-direction: column;
   min-height: 100vh;
   position: relative;
+  background-color: ${({ checkoutPage }) => checkoutPage && "#f1f1f1"};
   footer {
     margin-top: auto;
   }
@@ -21,7 +22,7 @@ const Modal = styled.div`
   position: absolute;
   height: 97.5%;
   width: 100%;
-  top: 2.5%;
+  top: 110px;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
   overflow-y: hidden;
@@ -30,13 +31,13 @@ const Modal = styled.div`
   }
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, checkoutPage }) => {
   const screenSize = useResizer();
 
   const { isModalOpen } = useContext(ModalContext);
 
   return (
-    <Wrapper style={globalStyles}>
+    <Wrapper checkoutPage={checkoutPage} style={globalStyles}>
       {screenSize < 768 ? <MobileNav /> : <Navbar />}
       {isModalOpen && <Modal />}
       {children}

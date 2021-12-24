@@ -12,6 +12,7 @@ const Wrapper = styled.section`
   z-index: 2;
   border-radius: 0.5rem;
   padding: 2rem;
+  min-width: 500px;
   max-width: 500px;
 `;
 
@@ -106,23 +107,27 @@ const Icon = styled.p`
 `;
 
 const CartContent = () => {
-  const { itemList, count } = useContext(CartContext);
-
-  const totalPrice = itemList.reduce(
-    (acc, { itemCount, price }) => acc + itemCount * price,
-    0
-  );
+  const {
+    cartList,
+    cartCount,
+    totalPrice,
+    addToCartItem,
+    removeFromCartItem,
+    updateCartOpen,
+    emptyCart,
+  } = useContext(CartContext);
 
   return (
     <Wrapper>
       <Header>
-        <Title>cart ({count}) </Title>
+        <Title>cart ({cartCount}) </Title>
 
-        <Para>remove all</Para>
+        <Para onClick={emptyCart}>remove all</Para>
       </Header>
-      {itemList.length > 0 && (
+
+      {cartList.length > 0 && (
         <Contents>
-          {itemList.map(({ name, price, itemCount, graphics, id }) => (
+          {cartList.map(({ name, price, itemCount, graphics, id }) => (
             <Item key={id}>
               <Graphic>
                 <GatsbyImage
@@ -137,9 +142,9 @@ const CartContent = () => {
               </Details>
 
               <Amount>
-                <Icon> - </Icon>
+                <Icon onClick={() => removeFromCartItem(id)}> - </Icon>
                 <Para> {itemCount} </Para>
-                <Icon> + </Icon>
+                <Icon onClick={() => addToCartItem(id)}> + </Icon>
               </Amount>
             </Item>
           ))}
@@ -151,8 +156,8 @@ const CartContent = () => {
         <SecondaryHeader> $ {totalPrice.toLocaleString()} </SecondaryHeader>
       </Total>
 
-      <CheckOut>
-        <Button btntype="primary" text="checkout" />
+      <CheckOut onClick={updateCartOpen}>
+        <Button btntype="primary" text="checkout" route="checkout" />
       </CheckOut>
     </Wrapper>
   );

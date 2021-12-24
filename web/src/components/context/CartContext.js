@@ -1,34 +1,79 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
+import { ModalContext } from "./ModalContext";
 
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
+  const { setModalOpen, isModalOpen } = useContext(ModalContext);
+
   const [isCartOpen, setCartOpen] = useState(false);
-  const [count, setCount] = useState(0);
-  const [item, setItem] = useState({});
-  const [itemList, setItemList] = useState([]);
+  const [cartList, setCartList] = useState([]);
 
-  const updateCount = (num) => setCount(num);
+  const findItem = (list, givenId) =>
+    list.filter((listItem) => listItem.id === givenId);
 
-  const updateCartOpen = () => setCartOpen(!isCartOpen);
+  const updateCartOpen = () => {
+    setCartOpen(!isCartOpen);
+    setModalOpen(!isModalOpen);
+  };
 
-  useEffect(() => {
-    if (Object.keys(item).length !== 0) {
-      setItemList([...itemList, item]);
+  const updateCart = (item) => {
+    const isInCart = cartList.some((cartItem) => cartItem.id === item.id);
+
+    if (isInCart) {
+      const itemInCart = findItem(cartList, item.id);
+
+      setCartList(
+        [...cartList],
+        (itemInCart[0].itemCount = item.itemCount + itemInCart[0].itemCount)
+      );
+
+      // updateTotal
+    } else {
+      setCartList([...cartList, item]);
     }
-  }, [item]);
+  };
+
+  const addToCartItem = (id) => {
+    const itemToUpdate = findItem(cartList, id);
+    setCartList([...cartList], (itemToUpdate[0].itemCount += 1));
+  };
+
+  const removeFromCartItem = (id) => {
+    const itemToUpdate = findItem(cartList, id);
+
+    if (itemToUpdate[0].itemCount <= 1) {
+      setCartList(cartList.filter((item) => item.id !== itemToUpdate[0].id));
+      // updateCartOpen();
+    } else {
+      setCartList([...cartList], (itemToUpdate[0].itemCount -= 1));
+    }
+  };
+
+  const emptyCart = () => {
+    setCartList([]);
+    updateCartOpen();
+  };
+
+  const cartCount = cartList.reduce((acc, { itemCount }) => acc + itemCount, 0);
+
+  const totalPrice = cartList.reduce(
+    (acc, { itemCount, price }) => acc + itemCount * price,
+    0
+  );
 
   return (
     <CartContext.Provider
       value={{
-        count,
-        updateCount,
-        item,
-        setItem,
-        itemList,
-        setItemList,
-        isCartOpen,
+        cartList,
+        updateCart,
         updateCartOpen,
+        isCartOpen,
+        cartCount,
+        totalPrice,
+        addToCartItem,
+        removeFromCartItem,
+        emptyCart,
       }}
     >
       {children}
@@ -37,23 +82,3 @@ const CartContextProvider = ({ children }) => {
 };
 
 export default CartContextProvider;
-
-/**
- * itemName
- * price
- * image?
- * count
- * clear cart capability
- * priceTotal
- * find a way to hold all of the items added
- */
-
-/**
- * things to do with one item
- * get the name, price, image and count
- */
-
-/**
- * once I get the item, add it to the itemTotalCount state
- * maybe use reduce for sumation?? where it starts at 0 and add the item.price to the total?
- */

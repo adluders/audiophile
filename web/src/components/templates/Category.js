@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
+import { navigate } from "gatsby";
 import Layout from "../shared/Layout";
 import { Container } from "../shared/GlobalStyles";
 import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Statement from "../shared/Statement";
 import PageNav from "../shared/PageNav";
-import Button from "../shared/Button";
+// import Button from "../shared/Button";
 import Gallery from "../shared/Gallery";
 import Suggestions from "../shared/Suggestions";
 import { CartContext } from "../context/CartContext";
@@ -150,6 +151,18 @@ const CartAdd = styled.button`
   }
 `;
 
+export const Button = styled.button`
+  border: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  background-color: transparent;
+  font-size: 1rem;
+  &:hover {
+    text-decoration: underline;
+    color: #d87d4a;
+  }
+`;
+
 const Category = ({ pageContext }) => {
   const { description, features, gallery, graphics, name, others, price, id } =
     pageContext;
@@ -160,26 +173,13 @@ const Category = ({ pageContext }) => {
 
   const removeItem = () => setItemCount(itemCount - 1);
 
-  const updateCart = () => {
-    updateCount(itemCount + count);
-    setItem({
-      name,
-      price,
-      itemCount,
-      graphics,
-      id,
-    });
-
-    // updateCartItems();
-  };
-
-  const { updateCount, count, setItem } = useContext(CartContext);
+  const { updateCart } = useContext(CartContext);
 
   return (
     <Layout>
       <Container>
         <Header>
-          <Button to="/" text="back" btntype="secondary" />
+          <Button onClick={() => navigate(-1)}>go back</Button>
         </Header>
 
         <Product>
@@ -207,7 +207,15 @@ const Category = ({ pageContext }) => {
                 <Para> {itemCount} </Para>
                 <Icon onClick={addItem}> + </Icon>
               </Amount>
-              <CartAdd onClick={updateCart}>add to cart</CartAdd>
+              <CartAdd
+                onClick={
+                  itemCount > 0
+                    ? () => updateCart({ name, price, itemCount, id, graphics })
+                    : null
+                }
+              >
+                add to cart
+              </CartAdd>
             </CartCTA>
           </Content>
         </Product>
@@ -246,3 +254,5 @@ const Category = ({ pageContext }) => {
 };
 
 export default Category;
+
+//<CartAdd onClick={itemCount > 0 ? updateCart : null}>

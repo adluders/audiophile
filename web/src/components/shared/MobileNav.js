@@ -114,11 +114,8 @@ const MobileNav = () => {
 
   const showMenu = () => {
     setMenuStatus(!menuStatus);
+    updateModalOpen();
   };
-
-  useEffect(() => {
-    menuStatus && setModalOpen(true);
-  }, [menuStatus]);
 
   const mobileNavData = [
     {
@@ -141,7 +138,8 @@ const MobileNav = () => {
     },
   ];
 
-  const { setModalOpen } = useContext(ModalContext);
+  const { setModalOpen, isModalOpen, updateModalOpen } =
+    useContext(ModalContext);
 
   return (
     <Header>

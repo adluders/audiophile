@@ -78,6 +78,25 @@ const PriceItem = styled.div`
   }
 `;
 
+const Input = styled.input`
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  line-height: 1rem;
+  border: 2px solid;
+  cursor: pointer;
+  background-color: #d87d4a;
+  color: #fff;
+  border: 1px solid transparent;
+  width: 100%;
+
+  &:hover {
+    background-color: #fbaf85;
+    color: #fff;
+  }
+`;
+
 const Summary = () => {
   const { cartList, totalPrice } = useContext(CartContext);
   const tax = totalPrice * 0.2;
@@ -134,9 +153,10 @@ const Summary = () => {
         </PriceItem>
       </PriceDetail>
 
-      <Button text="continue & pay" btntype="primary" />
+      <Input type="submit" value="continue & pay" />
     </Wrapper>
   );
 };
 
 export default Summary;
+// <Button text="continue & pay" btntype="primary" />

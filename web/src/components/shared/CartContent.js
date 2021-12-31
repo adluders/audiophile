@@ -14,6 +14,14 @@ const Wrapper = styled.section`
   padding: 2rem;
   min-width: 500px;
   max-width: 500px;
+
+  @media screen and (max-width: 500px) {
+    top: 100px;
+    left: 0;
+
+    min-width: 375px;
+    max-width: 480px;
+  }
 `;
 
 const Header = styled.div`

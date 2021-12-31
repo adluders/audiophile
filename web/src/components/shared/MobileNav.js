@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import Hamburger from "../../images/shared/tablet/icon-hamburger.svg";
@@ -9,6 +9,8 @@ import Headphones from "../../images/shared/desktop/image-category-thumbnail-hea
 import Earphones from "../../images/shared/desktop/image-category-thumbnail-earphones.png";
 import Arrow from "../../images/shared/desktop/icon-arrow-right.svg";
 import { ModalContext } from "../context/ModalContext";
+import { CartContext } from "../context/CartContext";
+import CartContent from "./CartContent";
 
 const Header = styled.header`
   background-color: #0e0e0e;
@@ -109,6 +111,19 @@ const CardBody = styled.div`
   }
 `;
 
+const ItemCount = styled.p`
+  border-radius: 50%;
+  background-color: #db784a;
+  color: #fff;
+  padding: 0.3rem;
+  width: 25px;
+  text-align: center;
+
+  position: absolute;
+  top: -100%;
+  right: -85%;
+`;
+
 const MobileNav = () => {
   const [menuStatus, setMenuStatus] = useState(false);
 
@@ -141,6 +156,8 @@ const MobileNav = () => {
   const { setModalOpen, isModalOpen, updateModalOpen } =
     useContext(ModalContext);
 
+  const { cartCount, updateCartOpen, isCartOpen } = useContext(CartContext);
+
   return (
     <Header>
       <Section>
@@ -154,9 +171,13 @@ const MobileNav = () => {
           <Image src={Logo} alt="Audiophile Logo" />
         </Link>
 
-        <Div>
+        <Div style={{ position: "relative" }} onClick={updateCartOpen}>
           <Image src={Cart} alt="User Cart" />
+
+          <ItemCount> {cartCount} </ItemCount>
         </Div>
+
+        {isCartOpen && <CartContent />}
       </Section>
 
       {menuStatus && (

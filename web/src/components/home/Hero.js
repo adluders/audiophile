@@ -4,6 +4,7 @@ import Button from "../shared/Button";
 import Headphones from "../../images/home/desktop/image-hero.jpg";
 import TabletHeadphones from "../../images/home/tablet/image-header.jpg";
 import MobileHeadphones from "../../images/home/mobile/image-header.jpg";
+import { useStaticQuery, graphql } from "gatsby";
 
 const Wrapper = styled.section`
   background-image: url(${Headphones});
@@ -69,23 +70,32 @@ const Para = styled.p`
 `;
 
 const Hero = () => {
+  const data = useStaticQuery(graphql`
+    {
+      sanityProduct(name: { eq: "XX99 Mark II Headphones" }) {
+        name
+        adText
+        slug {
+          current
+        }
+      }
+    }
+  `);
+
   return (
     <Wrapper>
       <Container>
         <Content>
           <Para>new product</Para>
 
-          <Heading>xx 99 mark ii headphones</Heading>
+          <Heading> {data.sanityProduct.name} </Heading>
 
-          <Para>
-            Experience natural, lifelike audio and exceptional build quality
-            made for the passionate music enthusiast.
-          </Para>
+          <Para> {data.sanityProduct.adText}</Para>
 
           <Button
             btntype="primary"
             text="see product"
-            route="headphones/xx99-mark-ii-headphones"
+            route={`headphones/${data.sanityProduct.slug.current}`}
           />
         </Content>
       </Container>

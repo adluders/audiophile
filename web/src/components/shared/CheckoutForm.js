@@ -26,7 +26,7 @@ const Fieldset = styled.fieldset`
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     display: flex;
     flex-direction: column;
   }

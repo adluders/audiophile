@@ -3,7 +3,6 @@ import React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
 import { CartContext } from "../context/CartContext";
-import Button from "./Button";
 
 const Wrapper = styled.aside`
   /* display: flex; */
@@ -98,7 +97,12 @@ const Input = styled.input`
 `;
 
 const Summary = () => {
-  const { cartList, totalPrice } = useContext(CartContext);
+  const defaultState = {
+    cartList: [],
+    totalPrice: 0,
+  };
+
+  const { cartList, totalPrice } = useContext(CartContext) || defaultState;
   const tax = totalPrice * 0.2;
   const grandTotal = totalPrice + tax + 50;
 

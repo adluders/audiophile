@@ -90,8 +90,16 @@ const Navbar = () => {
     },
   ];
 
-  const { updateModalOpen } = useContext(ModalContext);
-  const { updateCartOpen, isCartOpen, cartCount } = useContext(CartContext);
+  const defaultState = {
+    updateModalOpen: () => {},
+    updateCartOpen: () => {},
+    isCartOpen: false,
+    cartCount: 0,
+  };
+
+  const { updateModalOpen } = useContext(ModalContext) || defaultState;
+  const { updateCartOpen, isCartOpen, cartCount } =
+    useContext(CartContext) || defaultState;
 
   const openCart = () => {
     updateModalOpen();

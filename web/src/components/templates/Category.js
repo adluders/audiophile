@@ -151,7 +151,7 @@ const CartAdd = styled.button`
   }
 `;
 
-export const Button = styled.button`
+const Button = styled.button`
   border: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -167,13 +167,17 @@ const Category = ({ pageContext }) => {
   const { description, features, gallery, graphics, name, others, price, id } =
     pageContext;
 
+  const defaultState = {
+    updateCart: () => {},
+  };
+
   const [itemCount, setItemCount] = useState(0);
 
   const addItem = () => setItemCount(itemCount + 1);
 
   const removeItem = () => setItemCount(itemCount - 1);
 
-  const { updateCart } = useContext(CartContext);
+  const { updateCart } = useContext(CartContext) || defaultState;
 
   return (
     <Layout>

@@ -32,9 +32,13 @@ const Modal = styled.div`
 `;
 
 const Layout = ({ children, checkoutPage }) => {
+  const defaultState = {
+    isModalOpen: false,
+  };
+
   const screenSize = useResizer();
 
-  const { isModalOpen } = useContext(ModalContext);
+  const { isModalOpen } = useContext(ModalContext) || defaultState;
 
   return (
     <Wrapper checkoutPage={checkoutPage} style={globalStyles}>

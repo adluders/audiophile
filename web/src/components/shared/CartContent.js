@@ -115,6 +115,16 @@ const Icon = styled.p`
 `;
 
 const CartContent = () => {
+  const defaultState = {
+    cartList: [],
+    cartCount: 0,
+    totalPrice: 0,
+    addToCartItem: () => {},
+    removeFromCartItem: () => {},
+    updateCartOpen: () => {},
+    emptyCart: () => {},
+  };
+
   const {
     cartList,
     cartCount,
@@ -123,7 +133,7 @@ const CartContent = () => {
     removeFromCartItem,
     updateCartOpen,
     emptyCart,
-  } = useContext(CartContext);
+  } = useContext(CartContext) || defaultState;
 
   return (
     <Wrapper>

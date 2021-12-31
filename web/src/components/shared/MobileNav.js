@@ -153,8 +153,7 @@ const MobileNav = () => {
     },
   ];
 
-  const { setModalOpen, isModalOpen, updateModalOpen } =
-    useContext(ModalContext);
+  const { updateModalOpen } = useContext(ModalContext);
 
   const { cartCount, updateCartOpen, isCartOpen } = useContext(CartContext);
 

@@ -9,7 +9,7 @@ import Statement from "../components/shared/Statement";
 
 const Speakers = ({ data }) => {
   return (
-    <Layout>
+    <Layout title="Speakers">
       <Header>
         <h1>speakers</h1>
       </Header>

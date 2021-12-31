@@ -8,7 +8,7 @@ import Statement from "../components/shared/Statement";
 
 const Earphones = ({ data }) => {
   return (
-    <Layout>
+    <Layout title="Earphones">
       <Header>
         <h1>earphones</h1>
       </Header>

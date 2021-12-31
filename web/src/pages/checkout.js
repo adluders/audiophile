@@ -26,7 +26,7 @@ const Button = styled.button`
 
 const checkout = () => {
   return (
-    <Layout checkoutPage={true}>
+    <Layout checkoutPage={true} title="Checkout">
       <Container>
         <Header>
           <Button onClick={() => navigate(-1)}>go back</Button>{" "}

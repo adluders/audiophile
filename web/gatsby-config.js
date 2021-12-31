@@ -6,6 +6,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
     title: "Audiophile",
+    description: "eCommerce site containing various audio related products",
   },
   plugins: [
     {

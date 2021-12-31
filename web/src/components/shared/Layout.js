@@ -6,6 +6,7 @@ import MobileNav from "./MobileNav";
 import Footer from "./Footer";
 import styled from "styled-components";
 import { ModalContext } from "../context/ModalContext";
+import Seo from "./Seo";
 
 const Wrapper = styled.main`
   display: flex;
@@ -31,7 +32,7 @@ const Modal = styled.div`
   }
 `;
 
-const Layout = ({ children, checkoutPage }) => {
+const Layout = ({ children, checkoutPage, title }) => {
   const defaultState = {
     isModalOpen: false,
   };
@@ -42,6 +43,7 @@ const Layout = ({ children, checkoutPage }) => {
 
   return (
     <Wrapper checkoutPage={checkoutPage} style={globalStyles}>
+      <Seo title={title} />
       {screenSize < 768 ? <MobileNav /> : <Navbar />}
       {isModalOpen && <Modal />}
       {children}

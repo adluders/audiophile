@@ -180,7 +180,7 @@ const Category = ({ pageContext }) => {
   const { updateCart } = useContext(CartContext) || defaultState;
 
   return (
-    <Layout>
+    <Layout title={`${name}`}>
       <Container>
         <Header>
           <Button onClick={() => navigate(-1)}>go back</Button>

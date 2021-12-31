@@ -10,7 +10,7 @@ import Statement from "../components/shared/Statement";
 
 const IndexPage = () => {
   return (
-    <Layout>
+    <Layout title="Home">
       <Hero />
       <Container>
         <PageNav />

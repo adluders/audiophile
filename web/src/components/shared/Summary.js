@@ -103,8 +103,8 @@ const Summary = () => {
   };
 
   const { cartList, totalPrice } = useContext(CartContext) || defaultState;
-  const tax = totalPrice * 0.2;
-  const grandTotal = totalPrice + tax + 50;
+  const tax = Math.round(totalPrice * 0.2);
+  const grandTotal = Math.round(totalPrice + tax + 50);
 
   return (
     <Wrapper>

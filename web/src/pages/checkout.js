@@ -4,6 +4,7 @@ import styled from "styled-components";
 import CheckoutForm from "../components/shared/CheckoutForm";
 import { Container } from "../components/shared/GlobalStyles";
 import Layout from "../components/shared/Layout";
+import Confirmation from "../components/shared/Confirmation";
 
 const Header = styled.div`
   display: flex;
@@ -33,6 +34,8 @@ const checkout = () => {
         </Header>
 
         <CheckoutForm />
+
+        <Confirmation />
       </Container>
     </Layout>
   );

@@ -34,11 +34,10 @@ const checkout = () => {
         </Header>
 
         <CheckoutForm />
-
-        <Confirmation />
       </Container>
     </Layout>
   );
 };
 
 export default checkout;
+// <Confirmation />

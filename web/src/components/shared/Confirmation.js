@@ -37,7 +37,11 @@ const Header = styled.h1`
   margin-bottom: 0.5rem;
 `;
 
-const SecondHeader = styled.h3``;
+const SecondHeader = styled.h3`
+  @media screen and (max-width: 500px) {
+    margin-bottom: 0.5rem;
+  }
+`;
 
 const Para = styled.p`
   color: rgba(0, 0, 0, 0.5);
@@ -47,6 +51,11 @@ const Contents = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   border-radius: 0.5rem;
+
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const Items = styled.div`
@@ -54,12 +63,26 @@ const Items = styled.div`
   padding: 1rem;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
+
+  @media screen and (max-width: 500px) {
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0;
+  }
 `;
 
 const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  @media screen and (max-width: 500px) {
+    p {
+      &:last-of-type {
+        text-align: center;
+        width: 55px;
+      }
+    }
+  }
 `;
 
 const Graphic = styled.div`
@@ -76,6 +99,11 @@ const Total = styled.div`
 
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+
+  @media screen and (max-width: 500px) {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0.5rem;
+  }
 `;
 
 const Price = styled.h4`

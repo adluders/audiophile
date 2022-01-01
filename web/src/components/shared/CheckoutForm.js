@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { z } from "zod";
+import Confirmation from "./Confirmation";
 import Summary from "./Summary";
 
 const Form = styled.form`
@@ -111,9 +112,7 @@ const CheckoutForm = () => {
   const schema = z.object({
     name: z.string().nonempty({ message: "Please enter your name" }),
     email: z.string().email({ message: "Wrong format" }),
-    phone: z
-      .number({ message: "Not a number" })
-      .lte(10, { message: "Phone too long" }),
+    phone: z.string({ message: "Not a number" }),
   });
 
   const {
@@ -126,139 +125,143 @@ const CheckoutForm = () => {
   const [eMoneyNumber, setEmoneyNumber] = useState("");
   const [eMoneyPin, setEmoneyPin] = useState("");
 
+  const [confirmed, setConfirmed] = useState(false);
+
   const handlePaymentUpdate = (e) => setPaymentOption(e.target.value);
 
   const handleEmoneyUpdate = (e) => setEmoneyNumber(e.target.value);
 
   const handleEmoneyPin = (e) => setEmoneyPin(e.target.value);
 
+  const formSubmit = (data) => {
+    console.log(data);
+    setConfirmed(true);
+  };
+
   return (
-    <Form onSubmit={handleSubmit((d) => console.log(d))}>
-      <Section>
-        <Title>checkout </Title>
-        <Fieldset>
-          <Legend>billing details</Legend>
-          <Label>
-            name
-            <Input {...register("name")} placeholder="John Doe" />
-            {errors.name?.message && <Para>{errors.name?.message}</Para>}
-          </Label>
-
-          <Label>
-            email
-            <Input {...register("email")} placeholder="email@example.com" />
-            {errors.email?.message && <Para> {errors.email?.message} </Para>}
-          </Label>
-
-          <Label>
-            phone number
-            <Input {...register("phone")} placeholder="1 234 567 0000" />
-          </Label>
-        </Fieldset>
-
-        <Fieldset>
-          <Legend>shipping info</Legend>
-          <Label>
-            address
-            <Input {...register("address")} placeholder="123 Baker St" />
-          </Label>
-
-          <Label>
-            zip code
-            <Input {...register("zip")} placeholder="10001" />
-          </Label>
-
-          <Label>
-            city
-            <Input {...register("city")} placeholder="New York" />
-          </Label>
-
-          <Label>
-            country
-            <Input {...register("country")} placeholder="United States" />
-          </Label>
-        </Fieldset>
-
-        <Fieldset>
-          <Legend>payment details</Legend>
-
-          <Div>
-            <p style={{ textTransform: "capitalize" }}>payment method</p>
-          </Div>
-
-          <Div>
-            <Label>
-              <Input
-                name="payment"
-                type="radio"
-                value="e-Money"
-                onChange={handlePaymentUpdate}
-                checked={paymentOption === "e-Money"}
-              />
-              e-Money
-            </Label>
-
-            <Label>
-              <Input
-                name="payment"
-                type="radio"
-                value="Cash on Delivery"
-                onChange={handlePaymentUpdate}
-                checked={paymentOption === "Cash on Delivery"}
-              />
-              Cash on Delievery
-            </Label>
-          </Div>
-        </Fieldset>
-
-        {paymentOption === "e-Money" ? (
+    <>
+      <Form onSubmit={handleSubmit(formSubmit)}>
+        <Section>
+          <Title>checkout </Title>
           <Fieldset>
+            <Legend>billing details</Legend>
             <Label>
-              e-Money Number
-              <Input
-                type="text"
-                value={eMoneyNumber}
-                onChange={handleEmoneyUpdate}
-                placeholder="123456789"
-                maxLength={9}
-              />
+              name
+              <Input {...register("name")} placeholder="John Doe" />
+              {errors.name?.message && <Para>{errors.name?.message}</Para>}
             </Label>
 
             <Label>
-              e-Money Pin
-              <Input
-                type="text"
-                value={eMoneyPin}
-                onChange={handleEmoneyPin}
-                placeholder="1234"
-                maxLength={4}
-              />
+              email
+              <Input {...register("email")} placeholder="email@example.com" />
+              {errors.email?.message && <Para> {errors.email?.message} </Para>}
+            </Label>
+
+            <Label>
+              phone number
+              <Input {...register("phone")} placeholder="1 234 567 0000" />
             </Label>
           </Fieldset>
-        ) : (
-          <Div>
-            <Para style={{ color: "rgba(0,0,0,0.8)" }}>
-              The ‘Cash on Delivery’ option enables you to pay in cash when our
-              delivery courier arrives at your residence. Just make sure your
-              address is correct so that your order will not be cancelled.
-            </Para>
-          </Div>
-        )}
-      </Section>
 
-      <Section>
-        <Summary />
-      </Section>
-    </Form>
+          <Fieldset>
+            <Legend>shipping info</Legend>
+            <Label>
+              address
+              <Input {...register("address")} placeholder="123 Baker St" />
+            </Label>
+
+            <Label>
+              zip code
+              <Input {...register("zip")} placeholder="10001" />
+            </Label>
+
+            <Label>
+              city
+              <Input {...register("city")} placeholder="New York" />
+            </Label>
+
+            <Label>
+              country
+              <Input {...register("country")} placeholder="United States" />
+            </Label>
+          </Fieldset>
+
+          <Fieldset>
+            <Legend>payment details</Legend>
+
+            <Div>
+              <p style={{ textTransform: "capitalize" }}>payment method</p>
+            </Div>
+
+            <Div>
+              <Label>
+                <Input
+                  name="payment"
+                  type="radio"
+                  value="e-Money"
+                  onChange={handlePaymentUpdate}
+                  checked={paymentOption === "e-Money"}
+                />
+                e-Money
+              </Label>
+
+              <Label>
+                <Input
+                  name="payment"
+                  type="radio"
+                  value="Cash on Delivery"
+                  onChange={handlePaymentUpdate}
+                  checked={paymentOption === "Cash on Delivery"}
+                />
+                Cash on Delievery
+              </Label>
+            </Div>
+          </Fieldset>
+
+          {paymentOption === "e-Money" ? (
+            <Fieldset>
+              <Label>
+                e-Money Number
+                <Input
+                  type="text"
+                  value={eMoneyNumber}
+                  onChange={handleEmoneyUpdate}
+                  placeholder="123456789"
+                  maxLength={9}
+                />
+              </Label>
+
+              <Label>
+                e-Money Pin
+                <Input
+                  type="text"
+                  value={eMoneyPin}
+                  onChange={handleEmoneyPin}
+                  placeholder="1234"
+                  maxLength={4}
+                />
+              </Label>
+            </Fieldset>
+          ) : (
+            <Div>
+              <Para style={{ color: "rgba(0,0,0,0.8)" }}>
+                The ‘Cash on Delivery’ option enables you to pay in cash when
+                our delivery courier arrives at your residence. Just make sure
+                your address is correct so that your order will not be
+                cancelled.
+              </Para>
+            </Div>
+          )}
+        </Section>
+
+        <Section>
+          <Summary />
+        </Section>
+      </Form>
+
+      {confirmed && <Confirmation />}
+    </>
   );
 };
 
 export default CheckoutForm;
-
-/**
- * 
- *      
-
-
-
- */
